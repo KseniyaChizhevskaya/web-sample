@@ -17,6 +17,7 @@ export const RootPage = () => {
 
   return (
     <>
+      Hello
       <h1>Pokemons</h1>
       <div className='pokemons_container'>
         {list.map((pokemon, index) => (
