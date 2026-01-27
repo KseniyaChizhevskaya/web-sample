@@ -2,18 +2,166 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.pokemons_container {
+
+.cars-glav header {
   display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
+  align-items: center;
+  padding: 16px 24px;
+  background: white;
+  box-sizing: border-box;
 }
 
-.pokemon {
-  font-size: 20px;
-  text-align: center;
+/*  nav-item */
+.cars-glav .nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #141C24;
+  white-space: nowrap;
 }
 
-.pokemon img {
-  width: 170px;
-  height: 170px;
+
+.cars-glav .profile {
+  width: 103px;
+}
+
+.cars-glav .orders {
+  width: 90px;
+}
+
+.cars-glav .logout {
+  width: 83px;
+}
+
+
+.cars-glav .nav-item svg {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.cars-glav .logout svg:first-child {
+  width: 18px;
+  height: 18px;
+}
+
+/* Правая часть */
+.cars-glav .actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  /* отступ между "Выйти" и луной */
+}
+
+/*Полоска*/
+.full-width-stripe {
+  width: 100vw;
+  height: 2px;
+  background-color: #CED2DA;
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
+}
+
+/*Фильтры*/
+/* ОБЩИЙ КОНТЕЙНЕР — серый прямоугольник  */
+.search-container {
+  width: 960px;
+  height: 114px;
+  padding: 16px 24px 24px;
+  background: #F3F4F6;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* ВНУТРЕННИЙ КОНТЕЙНЕР*/
+.search-items {
+  width: 912px;
+  height: 74px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* СТИЛИ ДЛЯ ПОЛЕЙ: "Поиск" и "Даты аренды"*/
+.search-field,
+.date-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 345px;
+}
+
+.search-field label,
+.date-field label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #141C24;
+}
+
+/* СТИЛЬ ДЛЯ КОНТЕЙНЕРА ПОЛЯ С ИКОНКОЙ */
+.input-with-icon {
+  position: relative;
+  width: 100%;
+  height: 48px;
+  border: 1px solid #CED2DA;
+  border-radius: 8px;
+  background: white;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+/* СТИЛИ ДЛЯ INPUT  */
+.input-with-icon input {
+  flex: 1;
+  height: 100%;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  color: #141C24;
+  padding: 0;
+  outline: none;
+}
+
+
+
+/* ИКОНКИ ВНУТРИ ПОЛЕЙ (справа)*/
+.input-with-icon svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: #CED2DA;
+  pointer-events: none;
+}
+
+/* КНОПКА "ФИЛЬТРЫ"*/
+.filters-btn {
+  width: 190px;
+  height: 56px;
+  padding: 16px 32px;
+  background: #344051;
+  border: none;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  box-shadow: none;
+}
+
+.filters-btn svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
 }
