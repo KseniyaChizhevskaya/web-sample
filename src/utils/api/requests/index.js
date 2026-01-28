@@ -1,1 +1,1 @@
-export * from './getPokemons'
+export * from './getCars';
