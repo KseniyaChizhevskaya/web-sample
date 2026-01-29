@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getCars } from '../utils/api/requests';
-import { baseURL } from '../utils/constants/baseUrl';
+import { baseURL } from '../utils/constants/baseURL';
 
 export default function CarCatalog() {
+  const [cars, setCars] = useState([]);
   // Запрашиваем данные при загрузке компонента
   useEffect(() => {
     const fetchCars = async () => {
@@ -19,10 +20,6 @@ export default function CarCatalog() {
     fetchCars();
   }, []); // [] означает: выполнить только один раз при загрузке
 
-  const [cars, setCars] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  console.log(cars.data?.data, '@cars');
   return (
     <div
       style={{
@@ -64,7 +61,7 @@ export default function CarCatalog() {
               {car.brand} {car.model}
             </h3>
             <p style={{ margin: '8px 0 0', fontSize: '14px', color: '#666' }}>
-              {car.transmission}, {car.engine}
+              {car.transmission},{car.engine}
             </p>
             <p style={{ margin: '8px 0 0', fontSize: '16px', fontWeight: 700 }}>{car.price} ₽</p>
             <p style={{ margin: '4px 0 0', fontSize: '14px', color: '#666' }}>
