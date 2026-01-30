@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { getCars } from '../utils/api/requests';
-import { baseURL } from '../utils/constants/baseURL';
+import { getCars } from '../../utils/api/requests';
+import { baseURL } from '../../utils/constants/baseURL';
 import { useNavigate } from 'react-router-dom';
 
-export default function CarCatalog() {
+export default function CarsCatalog() {
   const [cars, setCars] = useState([]);
   const navigate = useNavigate();
 

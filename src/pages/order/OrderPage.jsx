@@ -1,21 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { rentCar } from '../../utils/api/requests';
+import { ORDER_STEPS } from '../../utils/constants/ORDER';
+import { formatDateToISO } from '../../utils/helpers/formatDateToISO';
 import Step1 from '../components/steps/Step1';
 import Step2 from '../components/steps/Step2';
 import Step3 from '../components/steps/Step3';
 
-const formatDateRange = (start, end) => {
+function formatDateRange(start, end) {
   if (!start || !end) return '';
   const opts = { day: 'numeric', month: 'long' };
   const startStr = start.toLocaleDateString('ru-RU', opts);
   const endStr = end.toLocaleDateString('ru-RU', opts);
   const year = end.getFullYear();
   return `${startStr} – ${endStr} ${year}`;
-};
+}
 
-const OrderPage = () => {
+function OrderPage() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [successRentData, setSuccessRentData] = useState({});
   const { car } = location.state || {};
 
   useEffect(() => {
@@ -50,7 +54,24 @@ const OrderPage = () => {
   const handleNext = () => setCurrentStep((prev) => Math.min(prev + 1, 3));
   const handleBack = () => setCurrentStep((prev) => Math.max(prev - 1, 1));
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    const payload = {
+      ...formData,
+      startDate: formData.startDate instanceof Date ? formData.startDate.getTime() : null,
+      endDate: formData.endDate instanceof Date ? formData.endDate.getTime() : null,
+      birthDate: formatDateToISO(formData.birthDate)
+    };
+
+    try {
+      const resp = await rentCar(payload);
+
+      if (resp.success === true) {
+        setSuccessRentData(resp.rent);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+
     console.log('Оформление заказа:', formData);
     alert('Заказ успешно отправлен!');
     navigate('/');
@@ -60,7 +81,7 @@ const OrderPage = () => {
 
   return (
     <div className='order-form-container'>
-      {currentStep === 1 && (
+      {currentStep === ORDER_STEPS.FIRST && (
         <Step1
           formData={formData}
           setFormData={setFormData}
@@ -68,7 +89,7 @@ const OrderPage = () => {
           onBack={handleBack}
         />
       )}
-      {currentStep === 2 && (
+      {currentStep === ORDER_STEPS.SECOND && (
         <Step2
           formData={formData}
           setFormData={setFormData}
@@ -76,11 +97,11 @@ const OrderPage = () => {
           onBack={handleBack}
         />
       )}
-      {currentStep === 3 && (
+      {currentStep === ORDER_STEPS.THIRD && (
         <Step3 formData={formData} onBack={handleBack} onSubmit={handleSubmit} />
       )}
     </div>
   );
-};
+}
 
 export default OrderPage;
