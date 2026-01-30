@@ -101,7 +101,12 @@ function CarPage() {
             <button onClick={() => navigate('/')} className='btn btn-outline'>
               Назад
             </button>
-            <button className='btn btn-primary'>Забронировать</button>
+            <button
+              onClick={() => navigate('/order', { state: { car } })}
+              className='btn btn-primary'
+            >
+              Забронировать
+            </button>
           </div>
         </div>
       </div>
