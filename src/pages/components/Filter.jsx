@@ -1,27 +1,19 @@
 function FilterComponent() {
   return (
     <>
-      {/* Фильтры */}
-
       <div className='search-container'>
-        {/* Серый прямоугольник (основной карточки) */}
         <div className='search-card'>
-          {/* Внутренний контейнер с масштабом 912×74 и gap:16px */}
           <div className='search-items'>
-            {/* Поле "Поиск" */}
             <div className='search-field'>
               <label>Поиск</label>
               <div className='input-with-icon'>
                 <input type='text' placeholder='Поиск' />
               </div>
             </div>
-
-            {/* Поле "Даты аренды" */}
             <div className='date-field'>
               <label>Даты аренды</label>
               <div className='input-with-icon'>
                 <input type='text' placeholder='10 – 24 апреля 2025 (14 дней)' />
-
                 <svg
                   width='24'
                   height='24'
@@ -36,8 +28,6 @@ function FilterComponent() {
                 </svg>
               </div>
             </div>
-
-            {/* Кнопка "Фильтры" */}
             <button className='filters-btn'>
               <svg
                 width='20'
@@ -52,7 +42,6 @@ function FilterComponent() {
                   stroke='white'
                 />
               </svg>
-
               <span>Фильтры</span>
             </button>
           </div>

@@ -3,7 +3,6 @@ import React from 'react';
 function HeaderComponent() {
   return (
     <>
-      {' '}
       <div className='cars-glav'>
         <header>
           <svg
@@ -26,8 +25,6 @@ function HeaderComponent() {
               fill='#DB0019'
             />
           </svg>
-
-          {/* Профиль */}
           <div className='nav-item profile'>
             <svg
               width='24'
@@ -49,11 +46,8 @@ function HeaderComponent() {
                 fill='#141C24'
               />
             </svg>
-
             <p>Профиль</p>
           </div>
-
-          {/* Заказы */}
           <div className='nav-item orders'>
             <svg
               width='24'
@@ -74,8 +68,6 @@ function HeaderComponent() {
 
             <p>Заказы</p>
           </div>
-
-          {/* Правая часть: Выйти + луна */}
           <div className='actions'>
             <div className='nav-item logout'>
               <svg
@@ -90,7 +82,6 @@ function HeaderComponent() {
                   fill='#141C24'
                 />
               </svg>
-
               <p>Выйти</p>
             </div>
             <svg
@@ -108,7 +99,6 @@ function HeaderComponent() {
           </div>
         </header>
       </div>
-      {/* Полоска */}
       <div className='full-width-stripe'></div>
     </>
   );
