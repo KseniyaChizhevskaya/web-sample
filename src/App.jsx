@@ -4,6 +4,7 @@ import CarPage from './pages/car/CarPage';
 import OrderPage from './pages/order/OrderPage';
 import { RootPage } from './pages/root';
 import { ROUTES } from './utils/constants/router';
+import SuccessPage from './pages/success/SuccessPage';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: ROUTES.ORDER,
     element: <OrderPage />
+  },
+  {
+    path: ROUTES.SUCCESS,
+    element: <SuccessPage />
   }
 ]);
 

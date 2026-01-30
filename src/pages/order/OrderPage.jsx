@@ -64,17 +64,13 @@ function OrderPage() {
 
     try {
       const resp = await rentCar(payload);
-
-      if (resp.success === true) {
-        setSuccessRentData(resp.rent);
+      if (resp.data.success === true) {
+        setSuccessRentData(resp.data.rent);
+        navigate('/success', { state: { rent: resp.data.rent } });
       }
     } catch (error) {
       console.error(error);
     }
-
-    console.log('Оформление заказа:', formData);
-    alert('Заказ успешно отправлен!');
-    navigate('/');
   };
 
   if (!car) return null;

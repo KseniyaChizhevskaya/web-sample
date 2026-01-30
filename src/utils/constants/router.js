@@ -1,5 +1,6 @@
 export const ROUTES = {
   ROOT: '/',
   CAR: '/car/:id',
-  ORDER: '/order'
+  ORDER: '/order',
+  SUCCESS: '/success'
 };
