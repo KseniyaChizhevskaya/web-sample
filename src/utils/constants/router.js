@@ -1,3 +1,4 @@
 export const ROUTES = {
-  ROOT: '/'
+  ROOT: '/',
+  CAR: '/car/:id'
 };

@@ -1,24 +1,27 @@
 import { useEffect, useState } from 'react';
 import { getCars } from '../utils/api/requests';
 import { baseURL } from '../utils/constants/baseURL';
+import { useNavigate } from 'react-router-dom';
 
 export default function CarCatalog() {
   const [cars, setCars] = useState([]);
-  // Запрашиваем данные при загрузке компонента
+  const navigate = useNavigate();
+
+  const handleButtonClick = (carId) => {
+    navigate(`/car/${carId}`);
+  };
   useEffect(() => {
     const fetchCars = async () => {
       try {
-        const data = await getCars(); // ← вот ваш "await getPokemons()", но для машин
-        setCars(data); // ← кладём данные в состояние
+        const data = await getCars();
+        setCars(data);
       } catch (error) {
         console.error('Ошибка загрузки машин:', error);
-        // Если API не работает — можно временно использовать mock-данные:
-        // setCars(mockCars);
       }
     };
 
     fetchCars();
-  }, []); // [] означает: выполнить только один раз при загрузке
+  }, []);
 
   return (
     <div
@@ -58,19 +61,20 @@ export default function CarCatalog() {
 
           <div>
             <h3 style={{ margin: '0', fontSize: '18px', fontWeight: 600 }}>
-              {car.brand} {car.model}
+              {car.brand}
+              {car.model}
             </h3>
             <p style={{ margin: '8px 0 0', fontSize: '14px', color: '#666' }}>
               {car.transmission},{car.engine}
             </p>
-            <p style={{ margin: '8px 0 0', fontSize: '16px', fontWeight: 700 }}>{car.price} ₽</p>
+            <p style={{ margin: '8px 0 0', fontSize: '16px', fontWeight: 700 }}>{car.price}₽</p>
             <p style={{ margin: '4px 0 0', fontSize: '14px', color: '#666' }}>
-              {car.rentalPrice} за 14 дней
+              {car.rentalPrice}
+              за 14 дней
             </p>
           </div>
 
-          {/* Кнопка "Выбрать" */}
-          <button className='button-choice'>
+          <button onClick={() => handleButtonClick(car.id)} className='button-choice'>
             <span>Выбрать</span>
           </button>
         </div>
